@@ -1,27 +1,25 @@
 public class MergeSort<T extends Comparable> implements ISort<T> {
 	public void sort(T[] in) {
-		in = mergeSort(in);
-	}
-	
-	public T[] mergeSort(T[] in) {
-		if(in.length == 1) { return in; }
-		
-		T[] front = (T[]) new Comparable[in.length / 2];
-		int i = 0;
-		while(i < front.length) {
-			front[i] = in[i];
-			i++;
-		}
-		T[] back = (T[]) new Comparable[in.length - front.length];
-		while(i < in.length) {
-			back[i - front.length] = in[i];
-			i++;
+		T[][] sublists = (T[][]) new Comparable[in.length][1];
+		for(int i = 0; i < sublists.length; i++) {
+			sublists[i][0] = in[i];
 		}
 
-		front = mergeSort(front);
-		back = mergeSort(back);
+		while(sublists.length > 1) {
+			T[][] updated = (T[][]) new Comparable[(sublists.length / 2) + (sublists.length % 2 == 0 ? 0 : 1)][1];
 
-		return merge(front, back);
+			for(int i = 0; i < updated.length; i++) {
+				if(i == updated.length - 1 && sublists.length % 2 != 0) {
+					updated[i] = sublists[sublists.length - 1];
+					continue;
+				}
+				updated[i] = merge(sublists[i * 2], sublists[(i * 2) + 1]);
+			}
+
+			sublists = updated;
+		}
+
+		in = sublists[0];
 	}
 
 	public T[] merge(T[] a, T[] b) {
