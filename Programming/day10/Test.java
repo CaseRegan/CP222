@@ -11,7 +11,7 @@ public class Test {
         sorts[0] = new SelectSort<Integer>();
 	//sorts[0] = new MergeSortIterative<Integer>();
 	/*
-	 * Since I accidentally made both an iterative and a recursive merge sort, I thought I'd test them against eachother.
+	 * Since I accidentally made both an iterative and a recursive mergesort, I thought I'd test them against eachother.
 	 * Interestingly, the iterative one consistently outperforms the recursive one by a couple milliseconds!
 	 */
         sorts[1] = new MergeSort<Integer>();
