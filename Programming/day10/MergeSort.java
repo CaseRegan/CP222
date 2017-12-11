@@ -47,6 +47,6 @@ public class MergeSort<T extends Comparable> implements ISort<T> {
 	}
 
 	public String sortName() {
-		return "Merge Sort";
+		return "Recursive Merge Sort";
 	}
 }

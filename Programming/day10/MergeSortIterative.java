@@ -1,4 +1,4 @@
-public class MergeSort<T extends Comparable> implements ISort<T> {
+public class MergeSortIterative<T extends Comparable> implements ISort<T> {
 	public void sort(T[] in) {
 		T[][] sublists = (T[][]) new Comparable[in.length][1];
 		for(int i = 0; i < sublists.length; i++) {
@@ -45,6 +45,6 @@ public class MergeSort<T extends Comparable> implements ISort<T> {
 	}
 
 	public String sortName() {
-		return "Merge Sort";
+		return "Iterative Merge Sort";
 	}
 }
