@@ -9,13 +9,11 @@ public class MergeSort<T extends Comparable> implements ISort<T> {
 		T[] front = (T[]) new Comparable[in.length / 2];
 		int i = 0;
 		while(i < front.length) {
-			front[i] = in[i];
-			i++;
+			front[i] = in[i++];
 		}
 		T[] back = (T[]) new Comparable[in.length - front.length];
 		while(i < in.length) {
-			back[i - front.length] = in[i];
-			i++;
+			back[i - front.length] = in[i++];
 		}
 
 		front = mergeSort(front);
