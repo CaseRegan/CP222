@@ -1,6 +1,6 @@
-public class BreadthFirstSearcher implements ISearcher<N, W> {
+public class BreadthFirstSearcher<N, W> implements ISearcher<N, W> {
 	public boolean pathExists(IGraph<N,W> g, INode<N> s, INode<N> e) {
-		IQueue<INode<N>> queue = new Queue<INode<N>>(g.length);
+		IQueue<INode<N>> queue = new Queue<INode<N>>(g.getNodeSet().length);
 		IList<INode<N>> visited = new ArrayList<INode<N>>();
 
 		INode<N> searching = s;
@@ -9,8 +9,8 @@ public class BreadthFirstSearcher implements ISearcher<N, W> {
 		while(queue.size() > 0) {
 			searching = queue.dequeue();
 
-			testingloop;
-			for(IEdge<N, W> edge : searching.getEdgesFrom()) {
+			testingloop:
+			for(IEdge<N, W> edge : g.getEdgesFrom(searching)) {
 				INode<N> testing = edge.getDestination();
 				if(testing.getValue().equals(e.getValue())) { return true; }
 				
